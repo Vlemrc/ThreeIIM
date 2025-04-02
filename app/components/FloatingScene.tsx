@@ -1,12 +1,23 @@
 "use client"
 import { Canvas } from "@react-three/fiber"
-import { OrbitControls, Html, Environment } from "@react-three/drei"
-import { useRef, useState } from "react"
+import { OrbitControls, Html, Environment, useProgress } from "@react-three/drei"
+import { useRef, useState, Suspense } from "react"
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib"
 import type { Group } from "three"
 import { data, Project } from "./data"
 
-
+function Loader() {
+  const { progress } = useProgress()
+  return (
+    <Html center>
+      <div className="flex flex-col items-center justify-center">
+        <p className="text-white mt-4 font-sixcaps text-[150px]">
+          {progress.toFixed(0)}%
+        </p>
+      </div>
+    </Html>
+  )
+}
 
 interface FloatingDivsProps {
   items: Project[];
@@ -26,23 +37,25 @@ export default function FloatingScene({ activeProject, setActiveProject }: Float
 
   return (
     <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
-      <Environment preset="city" />
-      <ambientLight intensity={0.5} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-      <pointLight position={[-10, -10, -10]} />
+      <Suspense fallback={<Loader />}>
+        <Environment preset="city" />
+        <ambientLight intensity={0.5} />
+        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+        <pointLight position={[-10, -10, -10]} />
 
-      <FloatingDivs items={items} setActiveProject={setActiveProject} activeProject={activeProject} />
+        <FloatingDivs items={items} setActiveProject={setActiveProject} activeProject={activeProject} />
 
-      <OrbitControls
-        ref={controlsRef}
-        enableZoom={false}
-        enablePan={false}
-        rotateSpeed={0.5}
-        autoRotate={true}
-        autoRotateSpeed={0.5}
-        minPolarAngle={Math.PI / 2}
-        maxPolarAngle={Math.PI / 2}
-      />
+        <OrbitControls
+          ref={controlsRef}
+          enableZoom={false}
+          enablePan={false}
+          rotateSpeed={0.5}
+          autoRotate={true}
+          autoRotateSpeed={0.5}
+          minPolarAngle={Math.PI / 2}
+          maxPolarAngle={Math.PI / 2}
+        />
+      </Suspense>
     </Canvas>
   )
 }

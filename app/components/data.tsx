@@ -18,7 +18,7 @@ export const data: Project[] = [
     {
         id: 1,
         title: "Les pétales obscurs",
-        description: "Description du projet 1",
+        description: "Promotional website for a fictional clothing brand. Bloom in the shadows",
         image: "/images/lespetalesobscurs.png",
         stack: [
             { name: "Next", icon: "/images/nextjs.svg" },
@@ -34,7 +34,7 @@ export const data: Project[] = [
     {
         id: 2,
         title: "Quiz BNP",
-        description: "Description du projet 1",
+        description: "A quiz to test your knowledge about your electricity consumptions.",
         image: "/images/quiz-habitat.jpg",
         stack: [
             { name: "Wordpress", icon: "/images/react.svg" },
@@ -49,7 +49,7 @@ export const data: Project[] = [
     {
         id: 3,
         title: "EightyTwo",
-        description: "Description du projet 1",
+        description: "Promotional website for the Eighty Two. A club for wine enthusiasts.",
         image: "/images/eightytwo.png",
         stack: [
             { name: "Wordpress", icon: "/images/react.svg" },
@@ -65,7 +65,7 @@ export const data: Project[] = [
     {
         id: 4,
         title: "Bimota",
-        description: "Description du projet 1",
+        description: "Webflow site to promote Bimota motos",
         image: "/images/bimota.jpg",
         stack: [
             { name: "Webflow", icon: "/images/react.svg" },
@@ -81,18 +81,19 @@ export const data: Project[] = [
     {
         id: 5,
         title: "Notes AI",
-        description: "Description du projet 1",
+        description: "Apple Notes clone with AI features",
         image: "/images/applenotes.jpg",
         stack: [
             { name: "Next.js", icon: "/images/nextjs.svg" },
-            { name: "Tailwind CSS", icon: "/images/tailwind.svg" },
+            { name: "Tailwind", icon: "/images/tailwind.svg" },
             { name: "Motion", icon: "/images/tailwind.svg" },
             { name: "GSAP", icon: "/images/tailwind.svg" },
+            { name: "POSTGRESQL", icon: "/images/tailwind.svg" },
         ],
         year: 2025,
         link: "https://lpo-website.vercel.app/",
         color: "#ffc300",
-        bgcolor: "rgb(30 30 30)",
+        bgcolor: "rgb(120 120 120)",
         type: "Degree project",
     }
 ]

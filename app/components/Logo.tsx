@@ -1,13 +1,27 @@
+import { useState } from "react"
+
 interface LogoProps {
   setActiveProject: (id: number | null) => void;
   color: string | undefined;
 }
 
 export default function Logo({ color, setActiveProject }: LogoProps) {
+
+    const [isLeaving, setIsLeaving] = useState(false)
+
+    const handleClick = () => {
+        setIsLeaving(true)
+        
+        setTimeout(() => {
+            setActiveProject(null)
+            setIsLeaving(false)
+        }, 300)
+    }
+
     return (
         <div 
-            className={`absolute z-10 top-6 left-6 flex items-center justify-center w-[200px] cursor-pointer ${color ? "opacity-80" : "opacity-100"} transition-opacity duration-300 ease-in-out`} 
-            onClick={() => setActiveProject(null)}
+            className={`absolute z-10 top-6 left-6 flex items-center justify-center w-[200px] cursor-pointer ${color ? "opacity-70" : "opacity-100"} hover:opacity-100 transition-opacity duration-300 ease-in-out`} 
+            onClick={handleClick}
         >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1766.82 538.39">
                 <path fill={color ? color : "#fff"} className="transition-colors duration-300 transition" d="M182.02,117h26.93l-27.32,273.95h2.34l56.58-273.95h26.93l-70.24,304.38h-37.85l22.63-304.38Z"/>

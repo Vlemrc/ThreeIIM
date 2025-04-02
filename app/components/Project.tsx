@@ -1,5 +1,5 @@
 import { data, Project as ProjectType } from './data'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 gsap.registerPlugin(useGSAP);
@@ -10,7 +10,8 @@ interface ProjectProps {
 }
 
 export default function Project({ activeProject, setActiveProject }: ProjectProps) {
-
+    
+    const [isLeaving, setIsLeaving] = useState(false)
     const activeItem = data.find(item => item.id === activeProject)
     const imgRef = useRef(null)
 
@@ -182,6 +183,7 @@ export default function Project({ activeProject, setActiveProject }: ProjectProp
         }
     }, [activeProject]);
 
+    // DESC ANIM
     useGSAP(() => {
         if (activeProject) {
             const tlStack = gsap.timeline({
@@ -192,7 +194,7 @@ export default function Project({ activeProject, setActiveProject }: ProjectProp
             });
 
             gsap.set(descriptionRef.current, {
-                y: -20,
+                y: -30,
             });
 
             tlStack.to(descriptionRef.current, {
@@ -265,15 +267,26 @@ export default function Project({ activeProject, setActiveProject }: ProjectProp
         }
     }, [activeProject]);
 
+    const handleClose = () => {
+        setIsLeaving(true)
+        
+        setTimeout(() => {
+            setActiveProject(null)
+            setIsLeaving(false)
+        }, 500) 
+    }
+
+    if (!activeProject && !isLeaving) return null;
+
     return (
         <div 
-            className={`${activeProject ? "opacity-100 pointer-events-all" : "opacity-0 pointer-events-none"} fixed bottom-0 left-0 z-10 m-10 flex items-center justify-center h-[75%] transition transition-opacity duration-300 ease-in-out`}
-            onClick={() => setActiveProject(null)}
+            className={`fixed bottom-0 left-0 z-10 m-10 flex items-center justify-center h-[75%] transition-opacity duration-300 ease-in-out
+                ${isLeaving ? "opacity-0" : "opacity-100"} pointer-events-auto`}
+            onClick={handleClose}
             style={{ width: "calc(100% - 80px)"}}
         >
             <div 
                 className="relative rounded-lg w-full h-full flex items-center justify-center"
-                onClick={(e) => e.stopPropagation()}
             >
                 {/* Background Image */}
                 <div className="absolute inset-0 flex items-start justify-center">
@@ -316,7 +329,7 @@ export default function Project({ activeProject, setActiveProject }: ProjectProp
                             <div className="overflow-hidden"><p ref={discoverRef}>discover</p></div>
                             <div className="bg-white w-[1px] h-15" ref={discoverLineRef} style={{ backgroundColor: activeItem?.color}}></div>
                         </a>
-                        <div className="overflow-hidden"><p className="uppercase text-xs" style={{ color: activeItem?.color}} ref={descriptionRef}>{activeItem?.description}</p></div>
+                        <div className="overflow-hidden flex justify-end"><p className="uppercase text-xs max-w-2/3 text-right" style={{ color: activeItem?.color}} ref={descriptionRef}>{activeItem?.description}</p></div>
                     </div>
                 </div>
             </div>
