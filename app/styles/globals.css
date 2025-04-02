@@ -1,11 +1,23 @@
 @import "tailwindcss";
 
 body {
-  background: #0E0C17;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 main {
+  background: #0E0C17;
   height:100%;
+  transition: all 0.5s ease-in-out;
+}
+
+@font-face {
+  font-family: 'SixCaps';
+  src: url('../fonts/SixCaps-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-sixcaps {
+  font-family: 'SixCaps', sans-serif;
 }

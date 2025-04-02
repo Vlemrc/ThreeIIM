@@ -1,10 +1,8 @@
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
-import PageWrapper from "@/app/components/page-wrapper"
 
 export default function AboutPage() {
   return (
-    <PageWrapper>
       <div className="container mx-auto py-12 px-4 text-white">
         <Link href="/" className="flex items-center gap-2 text-blue-400 hover:text-blue-300 mb-8">
           <ArrowLeft size={16} />
@@ -60,7 +58,6 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-    </PageWrapper>
   )
 }
 
