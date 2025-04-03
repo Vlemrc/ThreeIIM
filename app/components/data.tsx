@@ -84,11 +84,11 @@ export const data: Project[] = [
         description: "Apple Notes clone with AI features. Ahead of Apple Intelligence",
         image: "/images/applenotes.jpg",
         stack: [
-            { name: "Next.js", icon: "/images/nextjs.svg" },
+            { name: "Next", icon: "/images/nextjs.svg" },
             { name: "Tailwind", icon: "/images/tailwind.svg" },
             { name: "Motion", icon: "/images/tailwind.svg" },
             { name: "GSAP", icon: "/images/tailwind.svg" },
-            { name: "POSTGRESQL", icon: "/images/tailwind.svg" },
+            { name: "POSTGRES", icon: "/images/tailwind.svg" },
         ],
         year: 2025,
         link: "#",

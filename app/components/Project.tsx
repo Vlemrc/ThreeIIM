@@ -301,7 +301,7 @@ export default function Project({ activeProject, setActiveProject, isVisible, se
                             <div className="overflow-hidden">
                                 <div id="stack" ref={stackContentRef} className="flex flex-row gap-2">
                                     {activeItem?.stack.map((tech, id) => (
-                                        <p key={id}>{tech.name}</p>
+                                        <p key={id} className="white-space-nowrap">{tech.name}</p>
                                     ))}
                                 </div>
                                 <div className="overflow-hidden"><p ref={typeContentRef}>{activeItem?.type}</p></div>
