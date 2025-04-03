@@ -49,7 +49,7 @@ export const data: Project[] = [
     {
         id: 3,
         title: "EightyTwo",
-        description: "Promotional website for the Eighty Two. A club for wine enthusiasts.",
+        description: "Promotional website for Eighty Two. A club for wine enthusiasts.",
         image: "/images/eightytwo.png",
         stack: [
             { name: "Wordpress", icon: "/images/react.svg" },
@@ -81,7 +81,7 @@ export const data: Project[] = [
     {
         id: 5,
         title: "Notes AI",
-        description: "Apple Notes clone with AI features",
+        description: "Apple Notes clone with AI features. Ahead of Apple Intelligence",
         image: "/images/applenotes.jpg",
         stack: [
             { name: "Next.js", icon: "/images/nextjs.svg" },
@@ -93,7 +93,7 @@ export const data: Project[] = [
         year: 2025,
         link: "https://lpo-website.vercel.app/",
         color: "#ffc300",
-        bgcolor: "rgb(120 120 120)",
+        bgcolor: "rgb(150 150 150)",
         type: "Degree project",
     }
 ]

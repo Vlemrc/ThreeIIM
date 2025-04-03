@@ -23,14 +23,20 @@ interface FloatingDivsProps {
   items: Project[];
   setActiveProject: (id: number | null) => void;
   activeProject: number | null;
+  setIsVisible: (isVisible: boolean) => void;
 }
 
 interface FloatingSceneProps {
   activeProject: number | null;
   setActiveProject: (id: number | null) => void;
+  setIsVisible: (isVisible: boolean) => void;
 }
 
-export default function FloatingScene({ activeProject, setActiveProject }: FloatingSceneProps) {
+export default function FloatingScene({ 
+  activeProject, 
+  setActiveProject, 
+  setIsVisible 
+}: FloatingSceneProps) {
   const items = data
 
   const controlsRef = useRef<OrbitControlsImpl>(null)
@@ -43,7 +49,12 @@ export default function FloatingScene({ activeProject, setActiveProject }: Float
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
         <pointLight position={[-10, -10, -10]} />
 
-        <FloatingDivs items={items} setActiveProject={setActiveProject} activeProject={activeProject} />
+        <FloatingDivs 
+          items={items} 
+          setActiveProject={setActiveProject} 
+          activeProject={activeProject} 
+          setIsVisible={setIsVisible}
+        />
 
         <OrbitControls
           ref={controlsRef}
@@ -60,9 +71,14 @@ export default function FloatingScene({ activeProject, setActiveProject }: Float
   )
 }
 
-function FloatingDivs({ items, setActiveProject, activeProject }: FloatingDivsProps) {
+function FloatingDivs({ items, setActiveProject, activeProject, setIsVisible }: FloatingDivsProps) {
   const radius = 4
   const groupRef = useRef<Group>(null)
+
+  const handleVisible = (id: number) => {
+    setActiveProject(id)
+    setIsVisible(true)
+  }
 
   return (
     <group ref={groupRef}>
@@ -77,7 +93,7 @@ function FloatingDivs({ items, setActiveProject, activeProject }: FloatingDivsPr
               <div
                 className="p-4 h-[520px] w-[800px] bg-white bg-opacity-80 backdrop-blur-md rounded-xl shadow-lg grayscale hover:grayscale-0 transform transition-all duration-300 hover:scale-105 cursor-pointer"
                 style={{backgroundImage: `url(${item.image})`, backgroundSize: "cover", backgroundPosition: "center"}}
-                onClick={() => setActiveProject(item.id)}
+                onClick={() => handleVisible(item.id)}
               >
               </div>
             </div>

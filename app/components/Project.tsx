@@ -7,11 +7,12 @@ gsap.registerPlugin(useGSAP);
 interface ProjectProps {
   activeProject: number | null
   setActiveProject: (id: number | null) => void
+    isVisible: boolean
+    setIsVisible: (isLeaving: boolean) => void
 }
 
-export default function Project({ activeProject, setActiveProject }: ProjectProps) {
-    
-    const [isLeaving, setIsLeaving] = useState(false)
+export default function Project({ activeProject, setActiveProject, isVisible, setIsVisible }: ProjectProps) {
+
     const activeItem = data.find(item => item.id === activeProject)
     const imgRef = useRef(null)
 
@@ -267,22 +268,10 @@ export default function Project({ activeProject, setActiveProject }: ProjectProp
         }
     }, [activeProject]);
 
-    const handleClose = () => {
-        setIsLeaving(true)
-        
-        setTimeout(() => {
-            setActiveProject(null)
-            setIsLeaving(false)
-        }, 500) 
-    }
-
-    if (!activeProject && !isLeaving) return null;
-
     return (
         <div 
-            className={`fixed bottom-0 left-0 z-10 m-10 flex items-center justify-center h-[75%] transition-opacity duration-300 ease-in-out
-                ${isLeaving ? "opacity-0" : "opacity-100"} pointer-events-auto`}
-            onClick={handleClose}
+            className={`fixed bottom-0 left-0 z-10 m-10 flex items-center justify-center h-[75%] transition-all duration-300 ease-in-out
+                ${isVisible ? "opacity-100 pointer-events-all" : "opacity-0 pointer-events-none"}`}
             style={{ width: "calc(100% - 80px)"}}
         >
             <div 
@@ -300,7 +289,7 @@ export default function Project({ activeProject, setActiveProject }: ProjectProp
 
                 {/* Content */}
                 <div className="relative z-10 h-full w-[60%] flex flex-col justify-between">
-                    <h2 ref={titleRef} style={{ color: activeItem?.color}} className="text-[250px]/60 font-sixcaps uppercase text-left -translate-x-[15%] -translate-y-[5%]">{activeItem?.title}</h2>
+                    <h2 ref={titleRef} style={{ color: activeItem?.color}} className="text-[250px]/60 font-sixcaps uppercase text-left -translate-x-[15%] -translate-y-[7%]">{activeItem?.title}</h2>
 
                     <div className="flex items-end justify-between w-full">
                         <div style={{ color: activeItem?.color}} className="flex flex-row gap-6 text-white uppercase text-xs">
