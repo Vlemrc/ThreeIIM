@@ -5,6 +5,7 @@ import { useState } from "react"
 import Logo from "./components/Logo"
 import { data } from './components/data'
 import IconIn from "./components/IconIn"
+import IntroDeveloper from "./components/IntroDeveloper"
 
 export default function Home() {
   const [activeProject, setActiveProject] = useState<number | null>(null)
@@ -23,6 +24,7 @@ export default function Home() {
       </div>
       <Project activeProject={activeProject} setActiveProject={setActiveProject} isVisible={isVisible} setIsVisible={setIsVisible} />
       <IconIn color={activeItem?.color} />
+      <IntroDeveloper color={activeItem?.color} />
     </main>
   )
 }
