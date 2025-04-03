@@ -16,7 +16,6 @@ export default function Logo({ color, setActiveProject, setIsVisible }: LogoProp
     }, 300)
   }
 
-  // Animation variants for the letters
   const letterVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i: number) => ({
@@ -26,10 +25,10 @@ export default function Logo({ color, setActiveProject, setIsVisible }: LogoProp
       z: 0,
       transition: {
         type: "spring",
-        stiffness: 500, // Higher stiffness for faster return
-        damping: 15, // Slightly higher damping for less oscillation
-        delay: i * 0.02, // Reduced delay between letters when returning
-        duration: 0.2, // Shorter duration
+        stiffness: 500, 
+        damping: 15, 
+        delay: i * 0.02, 
+        duration: 0.2, 
       },
     }),
     hover: (i: number) => ({
@@ -51,8 +50,8 @@ export default function Logo({ color, setActiveProject, setIsVisible }: LogoProp
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.05, // Faster stagger when returning
-        delayChildren: 0.1, // Less delay before starting return animation
+        staggerChildren: 0.05, 
+        delayChildren: 0.1, 
         when: "beforeChildren",
       },
     },
@@ -87,7 +86,7 @@ export default function Logo({ color, setActiveProject, setIsVisible }: LogoProp
     <div
       className={`absolute z-10 top-6 left-6 flex items-center justify-center w-[200px] cursor-pointer ${color ? "opacity-70" : "opacity-100"} hover:opacity-100 transition-opacity duration-300 ease-in-out`}
       onClick={handleClose}
-      style={{ perspective: "1000px" }} // Add perspective for 3D effect
+      style={{ perspective: "1000px" }} 
     >
       <motion.svg
         xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +95,7 @@ export default function Logo({ color, setActiveProject, setIsVisible }: LogoProp
         animate="visible"
         variants={containerVariants}
         whileHover="hover"
-        style={{ transformStyle: "preserve-3d" }} // Preserve 3D transformations
+        style={{ transformStyle: "preserve-3d" }} 
       >
         {paths.map((path, index) => (
           <motion.path
