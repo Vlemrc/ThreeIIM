@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 
 interface LogoProps {
   setActiveProject: (id: number | null) => void
-  color: string | undefined
+  color?: string | undefined
   setIsVisible: (isVisible: boolean) => void
 }
 
