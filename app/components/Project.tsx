@@ -195,7 +195,7 @@ export default function Project({ activeProject, setActiveProject, isVisible, se
             });
 
             gsap.set(descriptionRef.current, {
-                y: -30,
+                y: -45,
             });
 
             tlStack.to(descriptionRef.current, {

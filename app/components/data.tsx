@@ -86,8 +86,7 @@ export const data: Project[] = [
         stack: [
             { name: "Next", icon: "/images/nextjs.svg" },
             { name: "Tailwind", icon: "/images/tailwind.svg" },
-            { name: "Motion", icon: "/images/tailwind.svg" },
-            { name: "GSAP", icon: "/images/tailwind.svg" },
+            { name: "Motion/GSAP", icon: "/images/tailwind.svg" },
             { name: "POSTGRES", icon: "/images/tailwind.svg" },
         ],
         year: 2025,
